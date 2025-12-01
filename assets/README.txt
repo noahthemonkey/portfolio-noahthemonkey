@@ -1,0 +1,1 @@
+Place monkey avatar image here as monkey.jpg (use the provided photo). This file exists to keep the folder in version control.
