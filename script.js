@@ -284,4 +284,222 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initGlobe();
+
+  // Project data
+  const projectData = {
+    'ops-system': {
+      title: 'Internal Operations System (2025)',
+      status: 'done',
+      tag: 'Ops Automation',
+      content: `
+        <h4>Project Overview</h4>
+        <p>Built from scratch to handle the complete lifecycle of solar installation projects - from initial customer contact through installation and invoicing.</p>
+
+        <h4>Key Features</h4>
+        <ul>
+          <li>Real-time workflow tracking across sales, installation, and billing teams</li>
+          <li>Automated customer communication and documentation</li>
+          <li>JotForm integration for onsite protocols</li>
+          <li>Reduced manual work by ~80%</li>
+        </ul>
+      `
+    },
+    'arena-game': {
+      title: 'Arena PvP Game (Godot 4)',
+      status: 'in-progress',
+      tag: 'Game Dev',
+      hasCarousel: true,
+      content: `
+        <h4>About the Game</h4>
+        <p>A fast-paced 3D arena combat game built in Godot 4, focusing on tight controls and engaging multiplayer mechanics.</p>
+
+        <h4>Technical Focus</h4>
+        <ul>
+          <li>Character controller with responsive movement physics</li>
+          <li>Multiplayer networking architecture</li>
+          <li>Combat system with hitboxes and damage calculation</li>
+          <li>UI/UX design for competitive gameplay</li>
+        </ul>
+
+        <div class="project-gallery">
+          <div class="gallery-carousel">
+            <div class="carousel-track">
+              <div class="carousel-item">
+                <div class="placeholder-image">Screenshot 1</div>
+              </div>
+              <div class="carousel-item">
+                <div class="placeholder-image">Screenshot 2</div>
+              </div>
+              <div class="carousel-item">
+                <div class="placeholder-image">Screenshot 3</div>
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous image">&lt;</button>
+            <button class="carousel-btn next" aria-label="Next image">&gt;</button>
+          </div>
+        </div>
+      `
+    },
+    'ai-tools': {
+      title: 'AI Tools & Experiments',
+      status: 'done',
+      tag: 'LLM',
+      content: `
+        <h4>AI Integration Projects</h4>
+        <p>A collection of practical AI-powered tools built to solve real workflow challenges.</p>
+
+        <h4>Tools Built</h4>
+        <ul>
+          <li>Code generation and refactoring assistants</li>
+          <li>Document automation and summarization tools</li>
+          <li>Customer communication templates with context awareness</li>
+          <li>Prompt engineering frameworks for consistent outputs</li>
+        </ul>
+      `
+    },
+    'sunsettle': {
+      title: 'Sunsettle',
+      status: 'in-progress',
+      tag: 'Apps',
+      hasCarousel: true,
+      content: `
+        <h4>The Concept</h4>
+        <p>Stop guessing, start catching. Sunsettle analyzes live weather conditions, cloud patterns, air clarity, and terrain to deliver one beautifully simple number: your Sunset Beauty Score (0-100).</p>
+
+        <h4>Core Features</h4>
+        <ul>
+          <li><strong>Sunset Beauty Score:</strong> 0-100 rating with confidence level and exact timing</li>
+          <li><strong>Smart Predictions:</strong> Tells you when to go, where to face, and what colors to expect</li>
+          <li><strong>Saved Spots:</strong> Pin and track your favorite sunset locations</li>
+          <li><strong>Live Pulse Map:</strong> See when other users signal amazing sunsets in real-time</li>
+          <li><strong>Offline-Friendly:</strong> Caches predictions so you're covered without signal</li>
+        </ul>
+
+        <h4>Who It's For</h4>
+        <ul>
+          <li>Photographers timing golden hour shoots</li>
+          <li>Romantics planning the perfect evening</li>
+          <li>Walkers and hikers optimizing their routes</li>
+          <li>Anyone who's thought "I wish I'd known the sunset would be this good"</li>
+        </ul>
+
+        <h4>Technical Stack</h4>
+        <p>Built with React Native for cross-platform mobile. Integrates OpenWeatherMap, Sunrise-Sunset.org, elevation models, and optional air-quality feeds for intelligent predictions.</p>
+
+        <div class="project-gallery">
+          <div class="gallery-carousel">
+            <div class="carousel-track">
+              <div class="carousel-item">
+                <div class="placeholder-image">App Screenshot 1</div>
+              </div>
+              <div class="carousel-item">
+                <div class="placeholder-image">App Screenshot 2</div>
+              </div>
+              <div class="carousel-item">
+                <div class="placeholder-image">App Screenshot 3</div>
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous image">&lt;</button>
+            <button class="carousel-btn next" aria-label="Next image">&gt;</button>
+          </div>
+        </div>
+      `
+    }
+  };
+
+  // Modal functionality
+  const modal = document.getElementById('project-modal');
+  const modalBody = document.getElementById('modal-body');
+  const modalClose = modal?.querySelector('.modal-close');
+  const modalOverlay = modal?.querySelector('.modal-overlay');
+
+  const openModal = (projectId) => {
+    const project = projectData[projectId];
+    if (!project) return;
+
+    modalBody.innerHTML = `
+      <h2>${project.title}</h2>
+      ${project.content}
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Initialize carousel if present
+    setTimeout(() => initCarousel(), 100);
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Attach modal triggers
+  document.querySelectorAll('.project-card').forEach(card => {
+    const btn = card.querySelector('.view-details-btn');
+    const projectId = card.dataset.project;
+
+    if (btn && projectId) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(projectId);
+      });
+    }
+  });
+
+  // Close modal handlers
+  modalClose?.addEventListener('click', closeModal);
+  modalOverlay?.addEventListener('click', closeModal);
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Carousel functionality
+  let carouselState = { currentIndex: 0 };
+
+  const initCarousel = () => {
+    const carousel = document.querySelector('.gallery-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+    const items = carousel.querySelectorAll('.carousel-item');
+
+    if (!track || !items.length) return;
+
+    carouselState.currentIndex = 0;
+
+    const updateCarousel = () => {
+      const offset = -carouselState.currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+
+      if (prevBtn) prevBtn.disabled = carouselState.currentIndex === 0;
+      if (nextBtn) nextBtn.disabled = carouselState.currentIndex === items.length - 1;
+    };
+
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        if (carouselState.currentIndex > 0) {
+          carouselState.currentIndex--;
+          updateCarousel();
+        }
+      };
+    }
+
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        if (carouselState.currentIndex < items.length - 1) {
+          carouselState.currentIndex++;
+          updateCarousel();
+        }
+      };
+    }
+
+    updateCarousel();
+  };
 });

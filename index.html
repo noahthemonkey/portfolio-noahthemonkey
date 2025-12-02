@@ -165,12 +165,13 @@
           <div class="timeline-body">
             <p class="lede">Delivered full-stack solutions using JS, TS, C#, Power Apps, Power Automate, SharePoint, and PowerShell.</p>
             <ul>
+              <li>Designed, pitched, and sold a SharePoint-integrated Copilot that became a recurring revenue stream — architected end-to-end and led customer meetings that resulted in paid adoption. This solution evolved into a standalone product still sold by Precio today.</li>
               <li>Solved a high volume of customer tickets involving debugging, performance optimization, API integrations, and architectural fixes.</li>
-              <li>Built production systems including copilots, onboarding apps, document automation flows, and inspection tools.</li>
+              <li>Built production systems including onboarding apps, document automation flows, and inspection tools.</li>
               <li>Developed PowerShell scripts (PnP), handled Azure configurations, and managed SharePoint permissions for enterprise clients.</li>
               <li>Gathered requirements directly from customers and translated them into technical solutions.</li>
             </ul>
-            <p class="tagline">Go-to developer for complex, high-impact problems.</p>
+            <p class="tagline">Designed products that became revenue streams, not just code.</p>
           </div>
         </article>
 
@@ -198,20 +199,44 @@
         <h2>Things I&apos;ve shipped or am exploring</h2>
       </div>
       <div class="grid three">
-        <div class="card project-card">
-          <h3>Internal Operations System (2025)</h3>
+        <div class="card project-card" data-project="ops-system">
+          <div class="project-title-row">
+            <h3>Internal Operations System (2025)</h3>
+            <span class="status-badge done">Done</span>
+          </div>
           <p>Complete workflow-tracking system replacing chaotic Excel sheets with an automated digital pipeline for solar installations.</p>
           <span class="tag">Ops Automation</span>
+          <button class="view-details-btn">View Details</button>
         </div>
-        <div class="card project-card">
-          <h3>Arena PvP Game (Godot 4 - Ongoing)</h3>
+
+        <div class="card project-card" data-project="arena-game">
+          <div class="project-title-row">
+            <h3>Arena PvP Game (Godot 4)</h3>
+            <span class="status-badge in-progress">In Progress</span>
+          </div>
           <p>Developing a 3D arena PvP game to keep my hands sharp on game loops, physics, and playful UX.</p>
           <span class="tag">Game Dev</span>
+          <button class="view-details-btn">View Details</button>
         </div>
-        <div class="card project-card">
-          <h3>AI Tools &amp; Experiments</h3>
+
+        <div class="card project-card" data-project="ai-tools">
+          <div class="project-title-row">
+            <h3>AI Tools &amp; Experiments</h3>
+            <span class="status-badge done">Done</span>
+          </div>
           <p>Utility tools using LLMs to streamline coding, document creation, workflow automation, and customer communication.</p>
           <span class="tag">LLM</span>
+          <button class="view-details-btn">View Details</button>
+        </div>
+
+        <div class="card project-card" data-project="sunsettle">
+          <div class="project-title-row">
+            <h3>Sunsettle</h3>
+            <span class="status-badge in-progress">In Progress</span>
+          </div>
+          <p>Never miss a perfect sunset again. Your pocket meteorologist for chasing golden skies.</p>
+          <span class="tag">Apps</span>
+          <button class="view-details-btn">View Details</button>
         </div>
       </div>
     </section>
@@ -261,8 +286,14 @@
         <p class="lede">Remote or hybrid across Sweden, Europe, UK, Ireland, US-remote, or Spain.</p>
       </div>
       <div class="contact-grid">
-        <div class="card">
-          <h3>Contact</h3>
+        <div class="card contact-card">
+          <div class="contact-card-header">
+            <div class="contact-portrait" aria-hidden="true"></div>
+            <div>
+              <h3>Contact</h3>
+              <p class="contact-subtitle">Quick replies, real answers.</p>
+            </div>
+          </div>
           <p><a href="mailto:noah.msekni@hotmail.com">noah.msekni@hotmail.com</a></p>
         </div>
         <div class="card">
@@ -283,8 +314,19 @@
     </section>
   </main>
 
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be injected by JavaScript -->
+      </div>
+    </div>
+  </div>
+
   <footer class="footer">
-    <p>Built with curiosity by <strong>noahthemonkey</strong> - 2025</p>
+    <p>Built by <strong>noahthemonkey</strong> - 2025</p>
   </footer>
 
   <script src="script.js"></script>
