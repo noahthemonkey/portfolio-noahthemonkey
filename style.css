@@ -193,6 +193,15 @@ h3 { font-size: 20px; }
   margin: 12px 0 18px;
 }
 
+.meta span {
+  padding: 7px 10px;
+  border: 1px solid rgba(247, 201, 72, 0.2);
+  border-radius: 999px;
+  background: rgba(247, 201, 72, 0.07);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .cta-row {
   display: flex;
   gap: 12px;
@@ -238,6 +247,11 @@ h3 { font-size: 20px; }
   color: var(--muted);
   flex-wrap: wrap;
   font-weight: 600;
+}
+
+.contact-inline a:hover,
+.contact-card a:hover {
+  color: var(--banana);
 }
 
 .hero-card {

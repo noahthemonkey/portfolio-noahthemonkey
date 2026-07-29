@@ -288,121 +288,43 @@ document.addEventListener('DOMContentLoaded', () => {
   // Project data
   const projectData = {
     'ops-system': {
-      title: 'Internal Operations System (2025)',
+      title: 'Internal Operations Platform (2025–present)',
       status: 'done',
-      tag: 'Ops Automation',
+      tag: 'Product & Full Stack',
       content: `
-        <h4>Project Overview</h4>
-        <p>Built from scratch to handle the complete lifecycle of solar installation projects - from initial customer contact through installation and invoicing.</p>
+        <h4>The problem</h4>
+        <p>Customer and project work was fragmented across Excel, email, file storage, and individual memory. Trello became a useful temporary bridge while the real workflow was mapped, but the team needed a secure shared system of record.</p>
 
-        <h4>Key Features</h4>
+        <h4>What I delivered</h4>
         <ul>
-          <li>Real-time workflow tracking across sales, installation, and billing teams</li>
-          <li>Automated customer communication and documentation</li>
-          <li>JotForm integration for onsite protocols</li>
-          <li>Reduced manual work by ~80%</li>
-        </ul>
-      `
-    },
-    'arena-game': {
-      title: 'Arena PvP Game (Godot 4)',
-      status: 'in-progress',
-      tag: 'Game Dev',
-      hasCarousel: true,
-      content: `
-        <h4>About the Game</h4>
-        <p>A fast-paced 3D arena combat game built in Godot 4, focusing on tight controls and engaging multiplayer mechanics.</p>
-
-        <h4>Technical Focus</h4>
-        <ul>
-          <li>Character controller with responsive movement physics</li>
-          <li>Multiplayer networking architecture</li>
-          <li>Combat system with hitboxes and damage calculation</li>
-          <li>UI/UX design for competitive gameplay</li>
+          <li>A production TypeScript, React, and Next.js application running server-side on Node.js</li>
+          <li>PostgreSQL-backed customer, project, requirement, document, agreement, and activity workflows</li>
+          <li>Authentication, role-aware access, private files, PDF generation, transactional email, and traceable history</li>
+          <li>Database changes, releases, deployment verification, incident diagnosis, and continued user support</li>
         </ul>
 
-        <div class="project-gallery">
-          <div class="gallery-carousel">
-            <div class="carousel-track">
-              <div class="carousel-item">
-                <div class="placeholder-image">Screenshot 1</div>
-              </div>
-              <div class="carousel-item">
-                <div class="placeholder-image">Screenshot 2</div>
-              </div>
-              <div class="carousel-item">
-                <div class="placeholder-image">Screenshot 3</div>
-              </div>
-            </div>
-            <button class="carousel-btn prev" aria-label="Previous image">&lt;</button>
-            <button class="carousel-btn next" aria-label="Next image">&gt;</button>
-          </div>
-        </div>
+        <h4>Measured scope</h4>
+        <p>The platform supports 60+ customer cases, 280 tracked requirements, and 360+ traceable activities. Compared with the previous workflow, it saves an estimated 20–25 team hours per month in coordination and information retrieval.</p>
+
+        <p><em>Employer-sensitive implementation details, customer data, and internal screens are intentionally not published.</em></p>
       `
     },
     'ai-tools': {
-      title: 'AI Tools & Experiments',
-      status: 'done',
-      tag: 'LLM',
-      content: `
-        <h4>AI Integration Projects</h4>
-        <p>A collection of practical AI-powered tools built to solve real workflow challenges.</p>
-
-        <h4>Tools Built</h4>
-        <ul>
-          <li>Code generation and refactoring assistants</li>
-          <li>Document automation and summarization tools</li>
-          <li>Customer communication templates with context awareness</li>
-          <li>Prompt engineering frameworks for consistent outputs</li>
-        </ul>
-      `
-    },
-    'sunsettle': {
-      title: 'Sunsettle',
+      title: 'AI-Assisted Engineering Practice',
       status: 'in-progress',
-      tag: 'Apps',
-      hasCarousel: true,
+      tag: 'AI-Assisted Delivery',
       content: `
-        <h4>The Concept</h4>
-        <p>Stop guessing, start catching. Sunsettle analyzes live weather conditions, cloud patterns, air clarity, and terrain to deliver one beautifully simple number: your Sunset Beauty Score (0-100).</p>
+        <h4>How I use AI</h4>
+        <p>For approximately 3.5 years, I have used coding agents and language models as part of real engineering work—not as a substitute for engineering judgment.</p>
 
-        <h4>Core Features</h4>
+        <h4>Across the lifecycle</h4>
         <ul>
-          <li><strong>Sunset Beauty Score:</strong> 0-100 rating with confidence level and exact timing</li>
-          <li><strong>Smart Predictions:</strong> Tells you when to go, where to face, and what colors to expect</li>
-          <li><strong>Saved Spots:</strong> Pin and track your favorite sunset locations</li>
-          <li><strong>Live Pulse Map:</strong> See when other users signal amazing sunsets in real-time</li>
-          <li><strong>Offline-Friendly:</strong> Caches predictions so you're covered without signal</li>
+          <li>Requirements exploration and solution design</li>
+          <li>Implementation, debugging, and refactoring</li>
+          <li>Documentation, review, and verification</li>
+          <li>Rapid prototypes that are hardened before production use</li>
         </ul>
-
-        <h4>Who It's For</h4>
-        <ul>
-          <li>Photographers timing golden hour shoots</li>
-          <li>Romantics planning the perfect evening</li>
-          <li>Walkers and hikers optimizing their routes</li>
-          <li>Anyone who's thought "I wish I'd known the sunset would be this good"</li>
-        </ul>
-
-        <h4>Technical Stack</h4>
-        <p>Built with React Native for cross-platform mobile. Integrates OpenWeatherMap, Sunrise-Sunset.org, elevation models, and optional air-quality feeds for intelligent predictions.</p>
-
-        <div class="project-gallery">
-          <div class="gallery-carousel">
-            <div class="carousel-track">
-              <div class="carousel-item">
-                <div class="placeholder-image">App Screenshot 1</div>
-              </div>
-              <div class="carousel-item">
-                <div class="placeholder-image">App Screenshot 2</div>
-              </div>
-              <div class="carousel-item">
-                <div class="placeholder-image">App Screenshot 3</div>
-              </div>
-            </div>
-            <button class="carousel-btn prev" aria-label="Previous image">&lt;</button>
-            <button class="carousel-btn next" aria-label="Next image">&gt;</button>
-          </div>
-        </div>
+        <p>I retain responsibility for architecture, security, correctness, and production quality. I do not present this experience as model training or claim to be an AI research engineer.</p>
       `
     }
   };
