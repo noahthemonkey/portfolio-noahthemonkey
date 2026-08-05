@@ -309,6 +309,58 @@ document.addEventListener('DOMContentLoaded', () => {
         <p><em>Employer-sensitive implementation details, customer data, and internal screens are intentionally not published.</em></p>
       `
     },
+    'independent-game': {
+      title: 'Independent PvP Arena Game',
+      status: 'in-progress',
+      tag: 'Game Development',
+      content: `
+        <p>An independently developed multiplayer PvP arena game in Godot, built as a long-term systems, design, and content project.</p>
+
+        <h4>What I am building and learning</h4>
+        <ul>
+          <li>Multiplayer combat, player state, abilities, cooldowns, and readable hit feedback</li>
+          <li>Character and creature iteration, animation integration, equipment, and visual identity</li>
+          <li>Arena and world spaces, developer tooling, debugging, and regression verification</li>
+        </ul>
+
+        <div class="project-gallery" aria-label="PvP arena game development screenshots">
+          <div class="gallery-carousel">
+            <div class="carousel-track" id="game-gallery-track">
+              <figure class="carousel-item">
+                <div class="carousel-image-stage">
+                  <img src="assets/game/independent-pvp-combat.png" alt="Third-person fantasy arena fight with a red cone-shaped attack telegraph, floating damage numbers, health and mana bars, and ability cooldown icons." loading="lazy" decoding="async">
+                </div>
+                <figcaption><strong>Combat systems</strong> - directional attack telegraphs, damage feedback, cooldowns, and player status UI during an arena encounter.</figcaption>
+              </figure>
+              <figure class="carousel-item" hidden aria-hidden="true">
+                <div class="carousel-image-stage">
+                  <img src="assets/game/independent-arena-environment.png" alt="Foggy elevated landscape with tree-covered plateaus, a narrow bridge, cliffs, and a stone archway." loading="lazy" decoding="async">
+                </div>
+                <figcaption><strong>Environment iteration</strong> - connected arena spaces, traversal landmarks, and atmospheric depth.</figcaption>
+              </figure>
+              <figure class="carousel-item" hidden aria-hidden="true">
+                <div class="carousel-image-stage">
+                  <img src="assets/game/independent-character-animation.png" alt="Two armored fantasy characters in a forest clearing, one raising an oversized sword while the other faces the camera." loading="lazy" decoding="async">
+                </div>
+                <figcaption><strong>Character iteration</strong> - equipment, silhouettes, and combat animation in a shared arena scene.</figcaption>
+              </figure>
+            </div>
+
+            <div class="carousel-thumbs" aria-label="Choose a game screenshot">
+              <button class="carousel-thumb active" type="button" data-index="0" aria-label="Show combat systems screenshot" aria-current="true"><img src="assets/game/independent-pvp-combat.png" alt=""></button>
+              <button class="carousel-thumb" type="button" data-index="1" aria-label="Show environment screenshot" aria-current="false"><img src="assets/game/independent-arena-environment.png" alt=""></button>
+              <button class="carousel-thumb" type="button" data-index="2" aria-label="Show character animation screenshot" aria-current="false"><img src="assets/game/independent-character-animation.png" alt=""></button>
+            </div>
+
+            <div class="carousel-controls">
+              <button class="carousel-btn prev" type="button" aria-label="Previous screenshot" aria-controls="game-gallery-track">&#8592;</button>
+              <span class="carousel-status" aria-live="polite">1 of 3</span>
+              <button class="carousel-btn next" type="button" aria-label="Next screenshot" aria-controls="game-gallery-track">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      `
+    },
     'ai-tools': {
       title: 'AI-Assisted Engineering Practice',
       status: 'in-progress',
@@ -334,26 +386,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalBody = document.getElementById('modal-body');
   const modalClose = modal?.querySelector('.modal-close');
   const modalOverlay = modal?.querySelector('.modal-overlay');
+  let lastFocusedElement = null;
 
-  const openModal = (projectId) => {
+  const openModal = (projectId, initialSlide = 0) => {
     const project = projectData[projectId];
-    if (!project) return;
+    if (!project || !modal || !modalBody) return;
+
+    lastFocusedElement = document.activeElement;
 
     modalBody.innerHTML = `
-      <h2>${project.title}</h2>
+      <h2 id="project-modal-title">${project.title}</h2>
       ${project.content}
     `;
 
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-
-    // Initialize carousel if present
-    setTimeout(() => initCarousel(), 100);
+    initCarousel(initialSlide);
+    modalClose?.focus();
   };
 
   const closeModal = () => {
+    if (!modal) return;
     modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
+    }
   };
 
   // Attach modal triggers
@@ -367,6 +427,14 @@ document.addEventListener('DOMContentLoaded', () => {
         openModal(projectId);
       });
     }
+
+    card.querySelectorAll('.project-preview').forEach((preview) => {
+      preview.addEventListener('click', (event) => {
+        event.preventDefault();
+        const initialSlide = Number(preview.dataset.slide);
+        openModal(projectId, Number.isInteger(initialSlide) ? initialSlide : 0);
+      });
+    });
   });
 
   // Close modal handlers
@@ -375,33 +443,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (!modal?.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = [...modal.querySelectorAll('button:not(:disabled), [href], [tabindex]:not([tabindex="-1"])')]
+        .filter((element) => element instanceof HTMLElement && !element.hidden);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
   // Carousel functionality
   let carouselState = { currentIndex: 0 };
 
-  const initCarousel = () => {
-    const carousel = document.querySelector('.gallery-carousel');
+  const initCarousel = (initialIndex = 0) => {
+    const carousel = modalBody?.querySelector('.gallery-carousel');
     if (!carousel) return;
 
-    const track = carousel.querySelector('.carousel-track');
     const prevBtn = carousel.querySelector('.carousel-btn.prev');
     const nextBtn = carousel.querySelector('.carousel-btn.next');
-    const items = carousel.querySelectorAll('.carousel-item');
+    const items = [...carousel.querySelectorAll('.carousel-item')];
+    const thumbs = [...carousel.querySelectorAll('.carousel-thumb')];
+    const status = carousel.querySelector('.carousel-status');
 
-    if (!track || !items.length) return;
+    if (!items.length) return;
 
-    carouselState.currentIndex = 0;
+    carouselState.currentIndex = Math.min(Math.max(initialIndex, 0), items.length - 1);
 
     const updateCarousel = () => {
-      const offset = -carouselState.currentIndex * 100;
-      track.style.transform = `translateX(${offset}%)`;
+      items.forEach((item, index) => {
+        const isCurrent = index === carouselState.currentIndex;
+        item.hidden = !isCurrent;
+        item.setAttribute('aria-hidden', String(!isCurrent));
+      });
+
+      thumbs.forEach((thumb, index) => {
+        const isCurrent = index === carouselState.currentIndex;
+        thumb.classList.toggle('active', isCurrent);
+        thumb.setAttribute('aria-current', String(isCurrent));
+      });
 
       if (prevBtn) prevBtn.disabled = carouselState.currentIndex === 0;
       if (nextBtn) nextBtn.disabled = carouselState.currentIndex === items.length - 1;
+      if (status) status.textContent = `${carouselState.currentIndex + 1} of ${items.length}`;
     };
 
     if (prevBtn) {
@@ -421,6 +518,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
     }
+
+    thumbs.forEach((thumb) => {
+      thumb.onclick = () => {
+        const nextIndex = Number(thumb.dataset.index);
+        if (Number.isInteger(nextIndex) && nextIndex >= 0 && nextIndex < items.length) {
+          carouselState.currentIndex = nextIndex;
+          updateCarousel();
+        }
+      };
+    });
+
+    carousel.onkeydown = (event) => {
+      if (event.key === 'ArrowLeft' && carouselState.currentIndex > 0) {
+        event.preventDefault();
+        carouselState.currentIndex--;
+        updateCarousel();
+      } else if (event.key === 'ArrowRight' && carouselState.currentIndex < items.length - 1) {
+        event.preventDefault();
+        carouselState.currentIndex++;
+        updateCarousel();
+      }
+    };
 
     updateCarousel();
   };

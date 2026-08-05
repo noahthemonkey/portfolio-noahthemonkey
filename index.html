@@ -12,8 +12,8 @@
   <link rel="canonical" href="https://noahthemonkey.github.io/portfolio-noahthemonkey/">
   <link rel="icon" type="image/jpeg" href="assets/monkey.jpg">
   <title>Noah Msekni | Product-Minded Full-Stack Engineer</title>
-  <script src="assets/three.min.js" defer></script>
-  <link rel="stylesheet" href="style.css">
+  <script src="assets/three.min.js?v=20260805" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260805-3">
 </head>
 <body>
   <div id="globe-container" aria-hidden="true">
@@ -31,12 +31,12 @@
   </div>
 
   <header class="top-bar">
-    <div class="logo">
+    <a class="logo" href="https://github.com/noahthemonkey" target="_blank" rel="noreferrer" aria-label="Open noahthemonkey on GitHub">
       <div class="logo-avatar">
-        <img src="assets/monkey.jpg" alt="Noah monkey avatar" loading="lazy">
+        <img src="assets/monkey.jpg" alt="noahthemonkey GitHub avatar">
       </div>
       <span class="logo-text">noahthemonkey</span>
-    </div>
+    </a>
     <nav class="nav">
       <a href="#hero">Home</a>
       <a href="#profile">Profile</a>
@@ -71,9 +71,13 @@
           </div>
         </div>
         <div class="hero-card">
-          <div class="monkey-photo"></div>
-          <div class="hero-card-body">
+          <div class="hero-card-top">
             <p class="tag">TypeScript | React | Node.js | PostgreSQL</p>
+            <div class="profile-photo">
+              <img src="assets/noah-selfie.png" alt="Portrait of Noah Msekni" width="120" height="120" fetchpriority="high">
+            </div>
+          </div>
+          <div class="hero-card-body">
             <p>I build and operate business-critical web products that make complicated work easier to understand and execute.</p>
             <ul>
               <li>Ownership from workflow discovery to production support</li>
@@ -96,7 +100,7 @@
           <h3>What I do</h3>
           <p>I turn unclear operational problems into practical products: mapping the real workflow, shaping the data model, building the interface and APIs, and staying responsible after release.</p>
           <p>My recent work spans TypeScript, React, Next.js on the Node.js runtime, PostgreSQL, authentication, private files, transactional email, and production delivery.</p>
-          <p>Open to English- or Swedish-speaking roles: remote across Europe, strong Stockholm opportunities, or Valencia-based work.</p>
+          <p>Open to English- or Swedish-speaking roles: remote across Europe, strong Stockholm opportunities, or Alicante- or Valencia-based work.</p>
         </div>
         <div class="card">
           <h3>How I work</h3>
@@ -131,7 +135,7 @@
         <div class="card pill-card">
           <h3>Delivery &amp; Operations</h3>
           <div class="pills">
-            <span>Git</span><span>Vercel</span><span>Azure</span><span>n8n</span><span>Data Modelling</span><span>Access Control</span><span>Database Migrations</span><span>Incident Diagnosis</span>
+            <span>Git</span><span>Vercel</span><span>Azure</span><span>Microsoft Entra ID</span><span>MFA / SSO</span><span>API Credential Rotation</span><span>n8n</span><span>Data Modelling</span><span>Access Control</span><span>Database Migrations</span><span>Incident Diagnosis</span>
           </div>
         </div>
         <div class="card pill-card">
@@ -176,15 +180,15 @@
             <p class="dates">09/2022 - 09/2025</p>
           </div>
           <div class="timeline-body">
-            <p class="lede">Delivered applications, integrations, and automations for enterprise and public-sector customers in a consultancy environment.</p>
+            <p class="lede">Delivered and supported applications, integrations, and identity/access operations for security-sensitive enterprise and public-sector customers.</p>
             <ul>
-              <li>Entered unfamiliar customer environments, mapped requirements, and translated business processes into practical technical designs.</li>
-              <li>Built and supported solutions using JavaScript, C#, REST APIs, SharePoint, Power Apps, Power Automate, and PnP PowerShell.</li>
-              <li>Contributed to a SharePoint-integrated Copilot concept through solution design, demonstrations, and customer conversations that led to paid adoption.</li>
-              <li>Delivered onboarding, document automation, and inspection workflows, and diagnosed performance, integration, document, and access-control issues.</li>
-              <li>Explained technical trade-offs, documented solutions, and supported users through onboarding and continued improvement.</li>
+              <li>Worked as a junior developer in a customer takeover team supporting the Swedish Energy Agency, Swedavia, and Ahlsell across Microsoft 365, SharePoint, C#, JavaScript, and REST API solutions.</li>
+              <li>Created and deactivated users in Microsoft Entra ID, managed groups and permissions, supported MFA/SSO, resolved document-access incidents, and proactively tightened excessive access.</li>
+              <li>Maintained Swedavia website service integrations, rotating API keys and related secrets, tracking configuration, and troubleshooting failures.</li>
+              <li>Co-designed and implemented a daily Swedish Energy Agency document-lifecycle workflow with owner notifications and staged archive/deletion controls, protecting active files while supporting cleanup of several hundred GB dating to 2012.</li>
+              <li>Translated unclear customer issues into practical fixes, documented solutions, and supported continued service improvement.</li>
             </ul>
-            <p class="tagline">Learned to combine hands-on delivery with customer discovery and clear technical communication.</p>
+            <p class="tagline">Built practical judgment around service continuity, least-privilege access, and secure customer delivery.</p>
           </div>
         </article>
 
@@ -222,13 +226,25 @@
           <button class="view-details-btn">View Details</button>
         </div>
 
-        <div class="card project-card">
+        <div class="card project-card" data-project="independent-game">
           <div class="project-title-row">
-            <h3>Independent Product Development</h3>
+            <h3>Independent Game Development</h3>
             <span class="status-badge in-progress">In Progress</span>
           </div>
           <p>A long-term Godot project that keeps me practising multiplayer systems, player-facing feedback, tooling, and content iteration.</p>
+          <div class="project-preview-strip" aria-label="Preview game development screenshots">
+            <button class="project-preview" type="button" data-slide="0" aria-label="Open game showcase at combat systems screenshot">
+              <img src="assets/game/independent-pvp-combat.png" alt="" loading="lazy" decoding="async">
+            </button>
+            <button class="project-preview" type="button" data-slide="1" aria-label="Open game showcase at environment screenshot">
+              <img src="assets/game/independent-arena-environment.png" alt="" loading="lazy" decoding="async">
+            </button>
+            <button class="project-preview" type="button" data-slide="2" aria-label="Open game showcase at character animation screenshot">
+              <img src="assets/game/independent-character-animation.png" alt="" loading="lazy" decoding="async">
+            </button>
+          </div>
           <span class="tag">Personal Project</span>
+          <button class="view-details-btn" type="button">View Details</button>
         </div>
 
         <div class="card project-card" data-project="ai-tools">
@@ -283,15 +299,16 @@
       <div class="section-header">
         <p class="eyebrow">Let&apos;s talk</p>
         <h2>Let's work together</h2>
-        <p class="lede">Based in Borlänge, Sweden. Open to remote European roles, strong Stockholm opportunities, and Valencia-based work.</p>
+        <p class="lede">Based in Borlänge, Sweden. Open to remote European roles, strong Stockholm opportunities, and Alicante- or Valencia-based work.</p>
       </div>
       <div class="contact-grid">
         <div class="card contact-card">
           <div class="contact-card-header">
-            <div class="contact-portrait" aria-hidden="true"></div>
+            <div class="contact-portrait">
+              <img src="assets/noah-selfie.png" alt="" width="62" height="62" loading="lazy">
+            </div>
             <div>
-              <h3>Contact</h3>
-              <p class="contact-subtitle">Quick replies, real answers.</p>
+              <h3>Contact me here!</h3>
             </div>
           </div>
           <p><a href="mailto:noah.msekni@hotmail.com">noah.msekni@hotmail.com</a></p>
@@ -316,11 +333,11 @@
   </main>
 
   <!-- Project Modal -->
-  <div id="project-modal" class="modal">
+  <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-hidden="true">
     <div class="modal-overlay"></div>
     <div class="modal-content">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-body" id="modal-body">
+      <button class="modal-close" type="button" aria-label="Close project details">&times;</button>
+      <div class="modal-body" id="modal-body" tabindex="-1">
         <!-- Content will be injected by JavaScript -->
       </div>
     </div>
@@ -330,6 +347,6 @@
     <p>Built by <strong>Noah Msekni</strong> · 2026</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260805-3"></script>
 </body>
 </html>
