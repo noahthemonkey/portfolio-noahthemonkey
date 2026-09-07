@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Noah Msekni is a product-minded full-stack engineer with four years of professional experience across TypeScript, React, Next.js, Node.js, C#, APIs, PostgreSQL, and AI-assisted delivery.">
-  <meta property="og:title" content="Noah Msekni | Product-Minded Full-Stack Engineer">
-  <meta property="og:description" content="Four years turning fragmented workflows into reliable production software, from discovery and data modelling through deployment and support.">
+  <meta name="description" content="Noah Msekni is a product-minded full-stack software engineer with four years of professional experience across TypeScript, React, Next.js, Node.js, C#, APIs, PostgreSQL, and secure production delivery, alongside independent game development in Godot.">
+  <meta property="og:title" content="Noah Msekni | Full-Stack Software Engineer">
+  <meta property="og:description" content="Four years building reliable production software across full-stack systems, integrations, security, delivery, and support. Open to Stockholm and remote roles.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://noahthemonkey.github.io/portfolio-noahthemonkey/">
   <meta name="theme-color" content="#0f3628">
   <link rel="canonical" href="https://noahthemonkey.github.io/portfolio-noahthemonkey/">
   <link rel="icon" type="image/jpeg" href="assets/monkey.jpg">
-  <title>Noah Msekni | Product-Minded Full-Stack Engineer</title>
+  <title>Noah Msekni | Full-Stack Software Engineer</title>
   <script src="assets/three.min.js?v=20260805" defer></script>
-  <link rel="stylesheet" href="style.css?v=20260805-3">
+  <link rel="preload" href="assets/fonts/unispace-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/unispace-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20260831-3">
 </head>
 <body>
   <div id="globe-container" aria-hidden="true">
@@ -37,7 +39,7 @@
       </div>
       <span class="logo-text">noahthemonkey</span>
     </a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Primary navigation">
       <a href="#hero">Home</a>
       <a href="#profile">Profile</a>
       <a href="#skills">Skills</a>
@@ -51,16 +53,16 @@
     <section id="hero" class="section hero">
       <div class="hero-body">
         <div class="hero-text">
-          <p class="eyebrow">Product-Minded Full-Stack Engineer | Solutions &amp; AI-Assisted Delivery</p>
+          <p class="eyebrow">Full-Stack Software Engineer | Product-Minded Development</p>
           <h1>Hi, I&apos;m Noah Msekni</h1>
           <p class="lede">
-            I turn fragmented operations into reliable software, working from discovery and data modelling through
-            interfaces, APIs, deployment, and production support.
+            I work across the whole system, from talking with the people using it to writing the code
+            and keeping it running. That makes it easier to see what needs to be built and what does not.
           </p>
           <div class="meta" aria-label="Profile highlights">
             <span>4 years professional experience</span>
             <span>Borlänge, Sweden</span>
-            <span>EU citizen · relocating to Spain Q4 2026</span>
+            <span>Stockholm on-site / hybrid · remote roles</span>
           </div>
           <div class="cta-row">
             <a class="btn primary" href="#experience">View experience</a>
@@ -83,6 +85,7 @@
               <li>Ownership from workflow discovery to production support</li>
               <li>APIs, relational data, access control, releases, and incident diagnosis</li>
               <li>Approximately 3.5 years of responsible AI-assisted development</li>
+              <li>Independent multidisciplinary game development in Godot 4.x</li>
             </ul>
           </div>
         </div>
@@ -100,7 +103,7 @@
           <h3>What I do</h3>
           <p>I turn unclear operational problems into practical products: mapping the real workflow, shaping the data model, building the interface and APIs, and staying responsible after release.</p>
           <p>My recent work spans TypeScript, React, Next.js on the Node.js runtime, PostgreSQL, authentication, private files, transactional email, and production delivery.</p>
-          <p>Open to English- or Swedish-speaking roles: remote across Europe, strong Stockholm opportunities, or Alicante- or Valencia-based work.</p>
+          <p>Open to English- or Swedish-speaking software engineering roles in Stockholm—on-site or hybrid—and remote opportunities.</p>
         </div>
         <div class="card">
           <h3>How I work</h3>
@@ -119,7 +122,7 @@
         <p class="eyebrow">Core Skills</p>
         <h2>What I work with</h2>
       </div>
-      <div class="grid three">
+      <div class="grid three skills-grid">
         <div class="card pill-card">
           <h3>Engineering</h3>
           <div class="pills">
@@ -142,6 +145,12 @@
           <h3>AI-Assisted Engineering</h3>
           <div class="pills">
             <span>Coding Agents &amp; LLMs</span><span>Requirements</span><span>Solution Design</span><span>Implementation</span><span>Debugging</span><span>Refactoring</span><span>Documentation</span><span>Verification</span>
+          </div>
+        </div>
+        <div class="card pill-card">
+          <h3>Game Development</h3>
+          <div class="pills">
+            <span>Godot 4.x · GDScript · C#</span><span>Gameplay &amp; Combat Systems</span><span>Multiplayer &amp; Networking</span><span>Blender · 3D Modelling · UV Work · Rigging</span><span>Animating &amp; Animation Integration</span><span>Character Customization &amp; Equipment Systems</span><span>UI / HUD · VFX · Audio Implementation</span><span>Debugging · Performance · Regression Testing</span>
           </div>
         </div>
       </div>
@@ -223,7 +232,7 @@
           </div>
           <p>Business-critical product that replaced fragmented Excel, Trello, email, and file workflows with secure, traceable operations.</p>
           <span class="tag">Product &amp; Full Stack</span>
-          <button class="view-details-btn">View Details</button>
+          <button class="view-details-btn" type="button">View Details</button>
         </div>
 
         <div class="card project-card" data-project="independent-game">
@@ -231,7 +240,7 @@
             <h3>Independent Game Development</h3>
             <span class="status-badge in-progress">In Progress</span>
           </div>
-          <p>A long-term Godot project that keeps me practising multiplayer systems, player-facing feedback, tooling, and content iteration.</p>
+          <p>An independent Godot 4.x PvP arena project spanning multiplayer, combat, character, animation, UI, audio, and content systems.</p>
           <div class="project-preview-strip" aria-label="Preview game development screenshots">
             <button class="project-preview" type="button" data-slide="0" aria-label="Open game showcase at combat systems screenshot">
               <img src="assets/game/independent-pvp-combat.png" alt="" loading="lazy" decoding="async">
@@ -254,7 +263,7 @@
           </div>
           <p>Approximately 3.5 years using coding agents and language models across the delivery lifecycle while retaining responsibility for quality and security.</p>
           <span class="tag">AI-Assisted Delivery</span>
-          <button class="view-details-btn">View Details</button>
+          <button class="view-details-btn" type="button">View Details</button>
         </div>
       </div>
     </section>
@@ -289,8 +298,8 @@
           </div>
         </div>
         <div class="card">
-          <h3>Game development &amp; multidisciplinary craft</h3>
-          <p>Game development is the long-term craft I am pursuing. I am a practical jack of all trades across programming, game systems, 3D modelling, animation, audio and music, tooling, and storytelling. I enjoy understanding the whole pipeline, learning whatever a project needs, and bringing those disciplines together into a coherent player experience.</p>
+          <h3>Multidisciplinary game development</h3>
+          <p>Alongside my professional software work, I independently develop a multiplayer PvP arena game. My work spans programming, gameplay and combat systems, multiplayer, 3D modelling, UV work, rigging, animating and animation integration, character customization, equipment, UI/HUD, VFX, audio, tooling, debugging, and performance verification.</p>
         </div>
       </div>
     </section>
@@ -299,7 +308,7 @@
       <div class="section-header">
         <p class="eyebrow">Let&apos;s talk</p>
         <h2>Let's work together</h2>
-        <p class="lede">Based in Borlänge, Sweden. Open to remote European roles, strong Stockholm opportunities, and Alicante- or Valencia-based work.</p>
+        <p class="lede">Based in Borlänge, Sweden. Open to relocating to Stockholm for on-site or hybrid work, and open to remote software roles.</p>
       </div>
       <div class="contact-grid">
         <div class="card contact-card">
@@ -316,7 +325,7 @@
         </div>
         <div class="card">
           <h3>Availability</h3>
-          <p>Available within one to three months. EU citizen relocating to the Valencia/Alicante area in Q4 2026; no visa sponsorship required.</p>
+          <p>Available within one to three months. EU citizen; no visa sponsorship required.</p>
           <button class="btn primary" id="copy-email" type="button" data-copy="noah.msekni@hotmail.com">Copy email</button>
           <p class="copy-status" id="copy-status" aria-live="polite"></p>
         </div>
@@ -345,6 +354,7 @@
 
   <footer class="footer">
     <p>Built by <strong>Noah Msekni</strong> · 2026</p>
+    <p class="font-credit"><a href="https://typodermicfonts.com/public-domain/" target="_blank" rel="noreferrer">Unispace</a> by Ray Larabie · public domain.</p>
   </footer>
 
   <script src="script.js?v=20260805-3"></script>
